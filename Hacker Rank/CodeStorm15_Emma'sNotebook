@@ -1,0 +1,48 @@
+/*Emma is writing bits (1s and 0s) in her notebook. Every second, she writes more bits.
+
+In the 1st second, she writes two bits in her notebook. She starts with 0 and alternates between 0 and 1. They look like this:
+
+0 1
+In the 2nd second, she writes three more bits in her notebook. This time, she starts with 1 and keeps alternating between 0 and 1. Now, they look like this:
+
+0 1 
+1 0 1
+After 6 seconds, her notebook looks like this:
+
+0 1
+1 0 1
+0 1 0 1
+1 0 1 0 1
+0 1 0 1 0 1
+1 0 1 0 1 0 1
+If you count carefully, you can see that Emma wrote 15 1's in her notebook after 6 seconds. She wants to know how many 1's she can write in t seconds.
+
+*/
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int t = in.nextInt();
+        System.out.println(EmmaRecurse(t));
+    }
+     public static long EmmaRecurse(long x)
+        {
+            long t =  Long.valueOf(x);
+            if(t==1)
+                return 1;
+            else if(t==2)
+                return 3;
+            else
+                if(t%2==0)
+                    return (long) EmmaRecurse(t-1)+((t/2)+1);
+                else
+                    return (long) EmmaRecurse(t-1)+(((t-1)/2)+1);  
+    }
+}
