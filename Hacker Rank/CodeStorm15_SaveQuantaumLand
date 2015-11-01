@@ -1,0 +1,42 @@
+/*Problem Statement
+
+In Quantumland, there are n cities numbered from 1 to n. Here, ci denotes the ith city. There are n−1 roads in Quantumland. Here, ci and ci+1 have a bidirectional road between them for each i<n.
+
+There is a rumor that Flatland is going to attack Quantumland, and the queen wants to keep her land safe. The road between ci and ci+1 is safe if there is a guard in ci or ci+1.
+
+The queen has already placed a few guards in some of the cities, but she is not sure if they are enough to keep the roads safe. She wants to know the minimum number of new guards she needs to hire.
+*/
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int t = in.nextInt();
+        for(int a0 = 0; a0 < t; a0++){
+            int n = in.nextInt();
+            int a[] = new int[n];
+            for(int a_i=0; a_i < n; a_i++){
+                a[a_i] = in.nextInt();
+            }
+            System.out.println(returnMinGuard(a));
+        }
+    }
+    public static int returnMinGuard(int[] a)
+        {
+            int count = 0;
+            for(int i=0; i <a.length-1; i++)
+                {
+                    if(a[i]==0 && a[i+1]==0)
+                        {
+                        a[i+1] = 1;
+                        count++;
+                    }}
+        return count; 
+    }
+}
