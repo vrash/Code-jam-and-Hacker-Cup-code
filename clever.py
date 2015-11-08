@@ -28,10 +28,12 @@ def average_number_of_students_per_section():
 	'''
 	#Get all districts
 	req_districts = requests.get(req, headers=authorize)
+	req_districts.raise_for_status()
 	urisPerDistrict = urisPerDistrict = [district['uri'] for district in json.loads(req_districts.text)['data']]
 	#For URI in district, get sections, count total number of students per section and keep track of number of sections
 	for uri in urisPerDistrict:
 		req_sections = requests.get(sec_req.format(uri), headers=authorize)
+		req_sections.raise_for_status()
 		section_list = json.loads(req_sections.text)['data']
 		students = sum([len(section['data']['students']) for section in section_list])
 		totalNumberOfStudents = totalNumberOfStudents + students
